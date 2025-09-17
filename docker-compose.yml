@@ -1,0 +1,19 @@
+version: '3.9'
+services:
+  db:
+    image: mysql:8.0 # You can specify a different version if needed
+    container_name: nest_crud_mysql # A custom name for your container
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword # **Important: Change this to a strong password**
+      MYSQL_DATABASE: nest_crud # Optional: Name of a database to create on startup
+      MYSQL_USER: nest # Optional: Name of a user to create on startup
+      MYSQL_PASSWORD: nest # Optional: Password for the user
+    ports:
+      - "3306:3306" # Map host port 3306 to container port 3306
+    volumes: 
+    - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data: #volume para armazenar dados do MySQL
+    
